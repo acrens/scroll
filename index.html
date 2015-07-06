@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>粘性模块</title>
+	<meta name="viewport" content="width=device-width, user-scalable=no,initial-scale=1, minimum-scale=1, maximum-scale=1"> 
+	<style>
+	html {
+		height: 100%;
+	}
+	body {
+		margin: 0;
+		padding: 0;
+		font: 14px/1.5 'Microsoft Yahei';
+		height: 1000%;
+	}
+	.tip {
+		position: absolute;
+		width: 120px;
+		height: 200px;
+		line-height: 200px;
+		left: 50%;
+		top: 50%;
+		margin: -100px 0 0 -60px;
+		text-align: center;
+		border: 1px solid #ccc;
+		box-shadow: 5px 5px 5px #333;
+	}
+	.fixed {
+		position: fixed;
+		top: 60px;
+		margin-top: 0;
+	}
+	</style>
+</head>
+<body>
+	<div class="tip j_tip">粘性模块</div>
+	<script type="text/javascript" src="./core/jquery-1.11.1.min.js"></script>
+	<script>
+	$(document).on('scroll', function() {
+		var el = $('.j_tip');
+		var offsetTop = el[0].offsetTop - 60;
+		var scrollTop = $(this).scrollTop();
+
+		console.log('tip:++++++++++' + offsetTop);
+		console.log('body:+++++++++' + scrollTop);
+
+		if(scrollTop > offsetTop) {
+			el.addClass('fixed');
+		} else {
+			el.removeClass('fixed');
+		}
+
+	});
+	</script>
+</body>
+</html>
